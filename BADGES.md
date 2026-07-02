@@ -18,16 +18,8 @@ downloads.
 
 ### Workflows
 
-This project will look for YAML files in `.github/workflows/`. For those that are found
-and have the following data, a badge is created.
-
-```yaml
-# foo.yml
-on:
-  push:
-    # Replace `DEFAULT` with the name of your default branch.
-    branch: [ "DEFAULT" ]
-```
+This project will look for YAML files in `.github/workflows/`. For those that are found, a badge is
+created.
 
 ## JavaScript (Node.js)
 
