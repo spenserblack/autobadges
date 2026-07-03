@@ -2,8 +2,7 @@
 
 ## Description
 
-This is a highly opinionated tool that generates badge text which you can copy and
-paste into your README. All the cool coders use `| xclip -selection clipboard`.
+This is a highly opinionated tool that generates badge text and writes it to your README.
 
 See [`BADGES.md`](./BADGES.md) for a list of badges that are generated.
 
