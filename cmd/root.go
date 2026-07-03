@@ -11,6 +11,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var toTerminal bool
+
 var rootCmd = &cobra.Command{
 	Use:   "autobadges [README PATH]",
 	Short: "Add badges to your README based on your project files",
@@ -55,6 +57,13 @@ var rootCmd = &cobra.Command{
 		root := filepath.Dir(path)
 		badges := badges.Badges(root)
 
+		if toTerminal {
+			for _, badge := range badges {
+				fmt.Fprintln(stdout, badge)
+			}
+			return nil
+		}
+
 		err = readme.AddBadges(f, badges)
 
 		if err != nil {
@@ -67,4 +76,8 @@ var rootCmd = &cobra.Command{
 
 		return nil
 	},
+}
+
+func init() {
+	rootCmd.PersistentFlags().BoolVarP(&toTerminal, "to-terminal", "t", false, "Write the badges to the terminal rather than to your README")
 }

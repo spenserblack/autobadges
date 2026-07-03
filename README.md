@@ -2,7 +2,10 @@
 
 ## Description
 
-This is a highly opinionated tool that generates badge text and writes it to your README.
+This is a highly opinionated tool that generates badge text and writes it to your README. If you
+pass `--to-terminal`, the badges in Markdown format will be written to stdout rather than added
+to your README. This can be helpful if you want to put the badges somewhere besides the top of your
+README.
 
 See [`BADGES.md`](./BADGES.md) for a list of badges that are generated.
 
