@@ -7,6 +7,11 @@ paste into your README. All the cool coders use `| xclip -selection clipboard`.
 
 See [`BADGES.md`](./BADGES.md) for a list of badges that are generated.
 
+As an opinionated tool, this makes the following assumptions:
+
+- The README is always in the same directory as manifest files (`Cargo.toml`, `package.json`, etc.).
+- The README's title is a *level 1* header.
+
 ## Badge guidelines
 
 These are not strict rules, but most badges should follow these guidelines.
