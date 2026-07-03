@@ -50,19 +50,18 @@ var rootCmd = &cobra.Command{
 			return fmt.Errorf("Couldn't open README file: %w", err)
 		}
 
-		// readLimit is the number of bytes to read. If we can't find a title within a whole
-		// kilobyte of text, 🤷
-		const readLimit int = 1 << 10
-		bytes := make([]byte, readLimit)
-		n, err := f.Read(bytes)
+		badge := `\<badge placeholder\>`
+		badges := []string{badge}
+
+		err = readme.AddBadges(f, badges)
+
 		if err != nil {
-			fmt.Fprintln(stderr, "Couldn't read", path)
+			fmt.Fprintln(stderr, "Couldn't add badges to", path)
 			fmt.Fprintln(stderr, err)
 			os.Exit(1)
 		}
-		bytes = bytes[:n]
-		index := readme.TitleEndIndex(bytes)
-		fmt.Fprintln(stdout, "Badges should be written at index", index)
+
+		fmt.Fprintln(stdout, "Badges written to", path)
 
 		return nil
 	},
