@@ -3,6 +3,7 @@ module github.com/spenserblack/autobadges
 go 1.26.4
 
 require (
+	github.com/BurntSushi/toml v1.6.0
 	github.com/MakeNowJust/heredoc/v2 v2.0.1
 	github.com/spf13/cobra v1.10.2
 )

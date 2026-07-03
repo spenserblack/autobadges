@@ -3,8 +3,10 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/MakeNowJust/heredoc/v2"
+	"github.com/spenserblack/autobadges/internal/badges"
 	"github.com/spenserblack/autobadges/internal/readme"
 	"github.com/spf13/cobra"
 )
@@ -50,8 +52,8 @@ var rootCmd = &cobra.Command{
 			return fmt.Errorf("Couldn't open README file: %w", err)
 		}
 
-		badge := `\<badge placeholder\>`
-		badges := []string{badge}
+		root := filepath.Dir(path)
+		badges := badges.Badges(root)
 
 		err = readme.AddBadges(f, badges)
 
