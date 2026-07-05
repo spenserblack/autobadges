@@ -7,6 +7,7 @@ func Badges(root string) []string {
 	badges := make([]string, 0, 2)
 	cargo := Cargo(root)
 	badges = append(badges, cargo...)
+	badges = append(badges, GoMod(root))
 
 	return badges
 }
