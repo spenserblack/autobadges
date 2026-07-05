@@ -8,6 +8,7 @@ import (
 	"github.com/MakeNowJust/heredoc/v2"
 	"github.com/spenserblack/autobadges/internal/badges"
 	"github.com/spenserblack/autobadges/internal/readme"
+	"github.com/spenserblack/go-gitutil"
 	"github.com/spf13/cobra"
 )
 
@@ -39,6 +40,7 @@ var rootCmd = &cobra.Command{
 		var (
 			path string
 			f    *os.File
+			git  gitutil.Git
 			err  error
 		)
 		stdout := cmd.OutOrStdout()
@@ -48,14 +50,24 @@ var rootCmd = &cobra.Command{
 			path = args[0]
 			f, err = readme.Open(path)
 		} else {
-			path, f, err = readme.FindAndOpen()
+			var cwd string
+			cwd, err = os.Getwd()
+			if err != nil {
+				fmt.Fprintln(stderr, "Couldn't get cwd:", err)
+				os.Exit(1)
+			}
+			git, err = gitutil.New(cwd)
+			if err != nil {
+				git = nil
+			}
+			path, f, err = readme.FindAndOpen(git)
 		}
 		if err != nil {
 			return fmt.Errorf("Couldn't open README file: %w", err)
 		}
 
 		root := filepath.Dir(path)
-		badges := badges.Badges(root)
+		badges := badges.Badges(root, git)
 
 		if toTerminal {
 			for _, badge := range badges {

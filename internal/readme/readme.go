@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/spenserblack/autobadges/internal/project"
+	"github.com/spenserblack/go-gitutil"
 )
 
 // Open opens a file in read and write mode.
@@ -26,8 +27,8 @@ var commonReadmeNames = []string{
 
 // FindAndOpen tries to find and open the README file for the project. The file is opened in read and
 // write mode. The found path and the opened file are returned.
-func FindAndOpen() (string, *os.File, error) {
-	root, err := project.Root()
+func FindAndOpen(git gitutil.Git) (string, *os.File, error) {
+	root, err := project.Root(git)
 	if err != nil {
 		return "", nil, err
 	}

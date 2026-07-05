@@ -1,22 +1,20 @@
 package project
 
 import (
-	"os/exec"
 	"strings"
+
+	"github.com/spenserblack/go-gitutil"
 )
 
-// git gets the root from the git repository.
-type git struct{}
+// gitFinder gets the root from the gitFinder repository.
+type gitFinder struct {
+	git gitutil.Git
+}
 
-func (git) Root() (string, error) {
-	path, err := exec.LookPath("git")
+func (g gitFinder) Root() (string, error) {
+	raw, err := g.git.Output("rev-parse", "--no-revs", "--show-toplevel")
 	if err != nil {
-		return "", err
+		return "", nil
 	}
-	cmd := exec.Command(path, "rev-parse", "--no-revs", "--show-toplevel")
-	root, err := cmd.Output()
-	if err != nil {
-		return "", err
-	}
-	return strings.TrimSpace(string(root)), nil
+	return strings.TrimSpace(string(raw)), nil
 }
