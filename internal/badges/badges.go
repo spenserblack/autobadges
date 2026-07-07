@@ -9,7 +9,9 @@ func Badges(root string, git gitutil.Git) []string {
 	badges := []string{}
 	cargo := Cargo(root)
 	badges = append(badges, cargo...)
-	badges = append(badges, GoMod(root))
+	if goMod := GoMod(root); goMod != "" {
+		badges = append(badges, GoMod(root))
+	}
 	if remote, err := getRemote(git); err == nil {
 		githubWorkflows := GitHubWorkflows(root, remote)
 		badges = append(badges, githubWorkflows...)
