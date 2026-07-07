@@ -6,7 +6,7 @@ import "github.com/spenserblack/go-gitutil"
 // Badges gets all of the badges for a project.
 func Badges(root string, git gitutil.Git) []string {
 	// NOTE 2 Cargo badges
-	badges := make([]string, 0, 2)
+	badges := []string{}
 	cargo := Cargo(root)
 	badges = append(badges, cargo...)
 	badges = append(badges, GoMod(root))
