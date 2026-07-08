@@ -1,5 +1,7 @@
 # autobadges
 
+[![CI](https://github.com/spenserblack/autobadges/actions/workflows/ci.yml/badge.svg)](https://github.com/spenserblack/autobadges/actions/workflows/ci.yml)
+
 ## Description
 
 This is a highly opinionated tool that generates badge text and writes it to your README. If you
