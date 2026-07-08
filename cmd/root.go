@@ -23,7 +23,6 @@ var rootCmd = &cobra.Command{
 		The badges to add are determined by the files in your project. The following are supported:
 
 		- GitHub
-		  - Release download count for GitHub CLI extensions
 		  - workflow status
 		- Go
 		  - Go reference for Go modules that _are not_ CLI extensions

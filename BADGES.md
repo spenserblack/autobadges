@@ -7,16 +7,7 @@ included.
 
 A Go Reference badge is created if a `go.mod` file is found.
 
-## GitHub
-
-### CLI extensions
-
-If the repository's name starts with `gh-` and a `go.mod` file is found, then the
-repository is assumed to be a pre-compiled GitHub CLI extension.
-A [shields.io][shields-io] badge will be created that tracks GitHub release asset
-downloads.
-
-### Workflows
+## GitHub Workflows
 
 This project will look for YAML files in `.github/workflows/`. For those that are found, a badge is
 created.
