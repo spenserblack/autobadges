@@ -19,6 +19,8 @@ func Badges(root string, git gitutil.Git) []string {
 		githubWorkflows := GitHubWorkflows(root, remote)
 		badges = append(badges, githubWorkflows...)
 	}
+	gemspecs := GemSpec(root)
+	badges = append(badges, gemspecs...)
 
 	return badges
 }
