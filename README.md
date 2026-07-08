@@ -16,6 +16,24 @@ As an opinionated tool, this makes the following assumptions:
 - The README is always in the same directory as manifest files (`Cargo.toml`, `package.json`, etc.).
 - The README's title is a *level 1* header.
 
+## Installation
+
+### GitHub Release
+
+Download from the latest release and put it somewhere in `PATH`, or run an install script.
+
+#### Unix
+
+```shell
+curl -fsSL https://github.com/spenserblack/autobadges/raw/refs/heads/main/_scripts/install-gh.sh | sudo sh
+```
+
+### `go install`
+
+```shell
+go install github.com/spenserblack/autobadges@latest
+```
+
 ## Badge guidelines
 
 These are not strict rules, but most badges should follow these guidelines.
