@@ -13,7 +13,7 @@ import (
 func Cargo(root string) []string {
 	path := filepath.Join(root, "Cargo.toml")
 	metadata := struct {
-		Package struct{
+		Package struct {
 			Name string
 		}
 	}{}

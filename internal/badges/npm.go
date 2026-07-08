@@ -17,7 +17,7 @@ func Npm(root string) string {
 		return ""
 	}
 	defer f.Close()
-	metadata := struct{
+	metadata := struct {
 		Name string
 	}{}
 	decoder := json.NewDecoder(f)

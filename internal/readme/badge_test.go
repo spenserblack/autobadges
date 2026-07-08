@@ -9,11 +9,11 @@ import (
 )
 
 func TestAddBadges(t *testing.T) {
-	tests := []struct{
-		name string
+	tests := []struct {
+		name    string
 		content string
-		badges []string
-		want string
+		badges  []string
+		want    string
 	}{
 		{
 			name: "It adds badges under the header",

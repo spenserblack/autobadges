@@ -38,7 +38,7 @@ func GitHubWorkflows(root string, remote gitutil.Remote) []string {
 // gitHubWorkflowName reads a GitHub workflow, getting its name and its display name.
 func gitHubWorkflowNames(path string) (name string, display string) {
 	name = filepath.Base(path)
-	metadata := struct{
+	metadata := struct {
 		Name string
 	}{}
 	bytes, err := os.ReadFile(path)
