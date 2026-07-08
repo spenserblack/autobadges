@@ -16,4 +16,4 @@ echo "Running build script..."
 ./_scripts/build-all.sh
 
 echo "Creating draft release..."
-gh release create --draft --generate-notes "$TAG" "$DIST_DIR/*.tar.gz"
+gh release create --draft --generate-notes "$TAG" "dist/*.tar.gz"
