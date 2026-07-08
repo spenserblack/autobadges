@@ -1,6 +1,7 @@
 #!/bin/sh
 SCRIPT="$(readlink -f "$0")"
 BASE_DIR="$(dirname "$(dirname "$SCRIPT")")"
+TAG="${1:-v0.0.0}"
 cd "$BASE_DIR"
 if ! command -v gh > /dev/null 2>&1; then
 	echo "GitHub CLI (gh) is required" >&2
@@ -15,4 +16,4 @@ echo "Running build script..."
 ./_scripts/build-all.sh
 
 echo "Creating draft release..."
-gh release create --draft --generate-notes "v0.0.0" "$DIST_DIR/*.tar.gz"
+gh release create --draft --generate-notes "$TAG" "$DIST_DIR/*.tar.gz"
